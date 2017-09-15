@@ -1,17 +1,31 @@
 <ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      <b>Psst!</b> - Try <a href="http://view.ionic.io/">Ionic View</a> to easily share and test your app with clients and co-workers.
-    </p>
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">주택청약 공고</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="row header">
+      <div class="col">#</div>
+      <div class="col">지역</div>
+      <div class="col">공고명</div>
+      <div class="col">등록일</div>
+      <div class="col">완료여부</div>
+
+    </div>
+
+    <ion-item>{{pageIndex}}</ion-item>
+    <div ng-controller="DashCtrl" class="row" ng-repeat="data in items">
+
+      <div class="col">{{data.rn}}</div>
+      <div class="col">{{data.brtcCodeNm}}</div>
+      <div class="col" ng-click="alert1()">LK {{data.pblancNm}}</div>
+      <div class="col">{{data.frstRegistDt}}</div>
+      <div class="col">{{data.prgrStts}}</div>
+
+    </div>
+
+    <ion-infinite-scroll  on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
   </ion-content>
+
 </ion-view>
+
